@@ -3,6 +3,7 @@
 
   Keep in mind that your functions must still have and use a parameter for accepting all movies.
 */
+const movies = require("./movies");
 const exampleMovies = require("./movies");
 // Do not change the line above.
 
@@ -75,7 +76,16 @@ function getHighestMetascore(movies) {
  *  getAverageIMDBRating(movies);
  *  //> 7.76
  */
-function getAverageIMDBRating() {}
+function getAverageIMDBRating(movies) {
+  // declare a variable for average rating
+  let average = 0
+  // iterating through the movies object
+  for (let i = 0; i < movies.length; i++){
+    // adding and totaling the elements then dividing it by the number of elements
+    average += movies[i].imdbRating/movies.length
+  }
+  return average
+}
 
 /**
  * countByRating()
