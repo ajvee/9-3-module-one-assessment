@@ -224,7 +224,26 @@ return newArr
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie(movies) {}
+function getBiggestBoxOfficeMovie(movies) {
+  // setting up accumulator 
+  if (movies.length === 0){
+    return null
+  }
+  //establishing our variables to equal the first indexed object and dotnotation for retrieving 'boxOffice' key
+  let biggestBox = movies[0].boxOffice
+  //establishing our variables to equal the first indexed object and dotnotation for retrieving 'title' key
+  let biggestMovie = movies[0].title
+  for(let i = 0; i < movies.length; i++){
+    // comparing the looped object to our created variable 'biggestbox'
+    if(movies[i].boxOffice > biggestBox){
+      // slicing and retrieving the whole $ amount 
+      biggestBox = movies[i].boxOffice.slice(1)
+      // changing our variable to the looped movie with the highest amount of box office revenue
+      biggestMovie = movies[i].title
+    }
+  }
+  return biggestMovie
+}
 
 // Do not change anything below this line.
 module.exports = {
