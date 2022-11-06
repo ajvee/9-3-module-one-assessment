@@ -153,7 +153,14 @@ function findById(movies,id) {
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+function filterByGenre(movies,genre) {
+  let newGenre = []
+  for (i = 0; i < movies.length; i++){
+   if (movies[i].genre.toLowerCase().includes(genre.toLowerCase()))
+   newGenre.push(movies[i]) 
+  }
+  return newGenre
+}
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
@@ -190,7 +197,7 @@ function getAllMoviesReleasedAtOrBeforeYear() {}
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+function getBiggestBoxOfficeMovie(movies) {}
 
 // Do not change anything below this line.
 module.exports = {
