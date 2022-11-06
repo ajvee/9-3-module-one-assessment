@@ -98,7 +98,17 @@ function getAverageIMDBRating(movies) {
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {}
+function countByRating(movies){
+  let newObj = {}
+  for (let i = 0; i < movies.length; i++){
+    if (newObj[movies[i].rated] === undefined){
+      newObj[movies[i].rated] = 1
+    } else {
+      newObj[movies[i].rated] += 1
+    }
+  }
+  return newObj
+}
 
 /**
  * findById()
@@ -114,7 +124,14 @@ function countByRating() {}
       // Toy Story 4
     };
  */
-function findById() {}
+function findById(movies,id) {
+  for (let i = 0; i < movies.length; i++){
+    if (movies[i].imdbID === id){
+      return movies[i]
+    }
+  }
+  return null
+}
 
 /**
  * filterByGenre()
