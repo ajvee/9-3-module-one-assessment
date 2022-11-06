@@ -30,8 +30,11 @@ const exampleMovies = require("./movies");
     ];
  */
 function getAllMovieTitles(movies) {
+  // setting up our new array/ and accumulator
   let movieTitles = []
+  // iterating through the movies object
   for (i = 0; i < movies.length; i++){
+  // any movie title will get pushed into the array
    movieTitles.push(movies[i].title)
   } 
   return movieTitles
@@ -99,11 +102,15 @@ function getAverageIMDBRating(movies) {
  *  //> { G: 3, PG: 7 }
  */
 function countByRating(movies){
+  // creating new object/accumulator
   let newObj = {}
   for (let i = 0; i < movies.length; i++){
+    // checking to see if the array is empty 
     if (newObj[movies[i].rated] === undefined){
+      //if the array only has one movie
       newObj[movies[i].rated] = 1
     } else {
+      //incrementing by 1 if theres more than one movie
       newObj[movies[i].rated] += 1
     }
   }
@@ -126,10 +133,12 @@ function countByRating(movies){
  */
 function findById(movies,id) {
   for (let i = 0; i < movies.length; i++){
+    //setting up our condtional to see if the imdbID key matches the id parameter
     if (movies[i].imdbID === id){
       return movies[i]
     }
   }
+  // return null if the ID and array are empty/not match
   return null
 }
 
@@ -154,9 +163,12 @@ function findById(movies,id) {
  *  //> []
  */
 function filterByGenre(movies,genre) {
+  //setting up new array 
   let newGenre = []
   for (i = 0; i < movies.length; i++){
+    //since it's case-sensitive, i'll make it easier on me and lowercase every genre
    if (movies[i].genre.toLowerCase().includes(genre.toLowerCase()))
+   //pushing back all the lowercased genres into the created array
    newGenre.push(movies[i]) 
   }
   return newGenre
@@ -184,7 +196,22 @@ function filterByGenre(movies,genre) {
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+function getAllMoviesReleasedAtOrBeforeYear(movies,year) {
+  //creating new array 
+  let newArr = []
+  for (let i = 0; i < movies.length; i++){
+    //creating our new variable with and using slice to retrieve only the years from the different movies 
+  let released = movies[i].released.slice(6,11)
+  //comparing if the new variable with the sliced year is less than our year parameter
+  if(released <= year){
+    //pushing the years that less than or equal to into the established array
+    newArr.push(movies[i])
+  }
+}
+return newArr
+}
+  
+
 
 /**
  * getBiggestBoxOfficeMovie()
